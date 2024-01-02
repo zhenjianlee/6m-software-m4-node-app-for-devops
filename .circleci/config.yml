@@ -15,9 +15,9 @@ jobs:
           echo "Installing dependencies..."
           npm install
   test:
-  docker:
+  docker:  
     - image: cimg/node:16.10
-  steps:
+  steps:  
     - checkout
     - node/install-packages:
         pkg-manager: npm
