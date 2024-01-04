@@ -32,11 +32,11 @@ jobs:
       - setup_remote_docker
       - checkout
       - docker/check
-      - docker/build:  
+      - docker/build:
           image: zhenjianlee/education-space
       - docker/push:
           image: zhenjianlee/education-space
-        -
+          
   deploy:
     docker:
       - image: cimg/node:16.10
