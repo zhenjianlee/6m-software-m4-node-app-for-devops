@@ -55,28 +55,15 @@ jobs:
 
 
 workflows:
-  version: 2
   simple_workflow:
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - main
+      - build
       - test:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - main
       - publish:
           requires:
             - test
       - deploy:
           requires:
             - publish
-          filters:
-            branches:
-              only:
-                - main
