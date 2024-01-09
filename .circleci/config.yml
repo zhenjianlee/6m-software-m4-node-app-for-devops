@@ -36,15 +36,16 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - docker/check
+      - run: docker build -t $IMAGE_NAME .
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
   publish:
     executor: docker/docker
     steps:
       - setup_remote_docker
       - checkout
       - docker/check
-      - run: docker build -t $IMAGE_NAME .
-      - snyk/scan:
-          docker-image-name: $IMAGE_NAME
       - docker/build:
           image: zhenjianlee/education-space
           tag: v1.0.1
